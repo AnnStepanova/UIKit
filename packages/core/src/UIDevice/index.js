@@ -4,8 +4,7 @@ import MobileDetect from 'mobile-detect';
 import DeviceInfo from 'react-native-device-info';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
-const UI_STATUS_BAR_HEIGHT =
-    Platform.OS === 'ios' ? getStatusBarHeight() : StatusBar.currentHeight || 0;
+const UI_STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? getStatusBarHeight() : 0;
 const UI_NAVIGATION_BAR_HEIGHT = Platform.OS === 'ios' ? 44 : 56;
 
 const UI_IS_DESKTOP_WEB =
