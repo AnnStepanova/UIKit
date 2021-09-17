@@ -102,7 +102,19 @@ export const useNoticePosition = (
                 closedXSnapPoint: xSnapPoints.closedSnapPoint.value,
             };
         },
-        state => {
+        (state, prevState) => {
+            if (!state.openedYSnapPoint) {
+                /**
+                 * Not measured yet
+                 */
+                return;
+            }
+            if ((!prevState || !prevState.closedYSnapPoint) && state.closedYSnapPoint) {
+                /**
+                 * Initial yPosition
+                 */
+                yPosition.value = state.closedYSnapPoint;
+            }
             if (state.toastNoticeState === 'Opened') {
                 yPosition.value = moveWithSpring('Open', state.openedYSnapPoint, onAnimationEnd);
                 xPosition.value = moveWithSpring('Open', state.openedXSnapPoint, onAnimationEnd);

@@ -11,6 +11,13 @@ export const useBottomToastNoticeYSnapPoints = (
     const paddingBottom = Math.max(bottom, UIConstant.contentOffset);
 
     const openedYSnapPoint = useDerivedValue(() => {
+        if (noticeHeight.value === 0) {
+            /**
+             * noticeHeight haven't measured yet
+             * it mustn't pass an incorrect value
+             */
+            return 0;
+        }
         return -noticeHeight.value - paddingBottom - keyboardHeight.value;
     }, [paddingBottom]);
     const closedYSnapPoint = useDerivedValue(() => {

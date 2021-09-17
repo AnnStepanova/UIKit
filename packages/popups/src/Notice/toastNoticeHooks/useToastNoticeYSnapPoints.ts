@@ -7,6 +7,7 @@ export const useToastNoticeYSnapPoints = (
     type: UINoticeType,
     noticeHeight: Animated.SharedValue<number>,
     keyboardHeight: Animated.SharedValue<number>,
+    windowHeight: Animated.SharedValue<number>,
 ): SnapPoints => {
     const ySnapPointsBottomToastNotice: SnapPoints = useBottomToastNoticeYSnapPoints(
         noticeHeight,
@@ -14,6 +15,7 @@ export const useToastNoticeYSnapPoints = (
     );
     const ySnapPointsTopToastNotice: SnapPoints = useTopToastNoticeYSnapPoints(
         noticeHeight,
+        windowHeight,
     );
 
     switch (type) {
